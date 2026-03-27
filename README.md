@@ -166,6 +166,27 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+## Vercel Deployment
+
+1. Import the project in Vercel as a `Next.js` app.
+2. If the repository contains multiple apps, set the Root Directory to the folder that contains this project's `package.json`.
+3. Add `DATABASE_URL` in Vercel using your Neon pooled connection string.
+4. Optionally add `DIRECT_URL` using your Neon direct connection string for production Prisma schema commands.
+5. Redeploy after saving environment variables.
+6. Initialize the production database once with either:
+
+```bash
+npx prisma migrate deploy
+```
+
+or, for an empty new database:
+
+```bash
+npx prisma db push
+```
+
+If Vercel shows its plain white `404: NOT_FOUND` screen, that usually means the deployment itself is unavailable or failed before going live. That is different from the in-app Next.js not-found page.
+
 ## Neon Notes
 
 - Create a Neon project and database.

@@ -2,25 +2,15 @@ import "server-only";
 import { PrismaNeon } from "@prisma/adapter-neon";
 import { PrismaClient } from "@prisma/client";
 
+import { getRuntimeDatabaseUrl } from "@/lib/env";
+
 const globalForPrisma = globalThis as typeof globalThis & {
   prisma?: PrismaClient;
 };
 
-function getDatabaseUrl() {
-  const databaseUrl = process.env.DATABASE_URL ?? process.env.DIRECT_URL;
-
-  if (!databaseUrl) {
-    throw new Error(
-      "DATABASE_URL is not set. Add your Neon pooled connection string before starting Think Board.",
-    );
-  }
-
-  return databaseUrl;
-}
-
 function createPrismaClient() {
   const adapter = new PrismaNeon({
-    connectionString: getDatabaseUrl(),
+    connectionString: getRuntimeDatabaseUrl(),
   });
 
   return new PrismaClient({
