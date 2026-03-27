@@ -1,0 +1,47 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum TaskStatus {
+  IDEATION
+  TODO
+  IN_PROGRESS
+  IMPLEMENTED
+  GO_LIVE
+}
+
+model Task {
+  id        String     @id @default(cuid())
+  title     String     @db.VarChar(180)
+  summary   String?    @db.VarChar(280)
+  content   Json?
+  status    TaskStatus @default(IDEATION)
+  order     Int        @default(0)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  @@index([status, order])
+  @@index([updatedAt])
+}
+
+model Document {
+  id        String     @id @default(cuid())
+  title     String     @db.VarChar(180)
+  content   Json?
+  parentId  String?
+  parent    Document?  @relation("DocumentTree", fields: [parentId], references: [id], onDelete: SetNull)
+  children  Document[] @relation("DocumentTree")
+  position  Int        @default(0)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  @@index([parentId, position])
+  @@index([updatedAt])
+}

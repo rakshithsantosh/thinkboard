@@ -1,0 +1,116 @@
+.thinkboard-editor {
+  color: #1f2937;
+  line-height: 1.75;
+  padding: 1.5rem;
+}
+
+.thinkboard-editor > :first-child {
+  margin-top: 0;
+}
+
+.thinkboard-editor h1,
+.thinkboard-editor h2,
+.thinkboard-editor h3 {
+  color: #0f172a;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.9rem;
+  text-wrap: balance;
+}
+
+.thinkboard-editor h1 {
+  font-size: 2rem;
+  margin-top: 2.2rem;
+}
+
+.thinkboard-editor h2 {
+  font-size: 1.5rem;
+  margin-top: 1.8rem;
+}
+
+.thinkboard-editor h3 {
+  font-size: 1.25rem;
+  margin-top: 1.6rem;
+}
+
+.thinkboard-editor p {
+  margin: 0.8rem 0;
+}
+
+.thinkboard-editor ul,
+.thinkboard-editor ol {
+  margin: 1rem 0 1rem 1.2rem;
+  padding-left: 0.8rem;
+}
+
+.thinkboard-editor li + li {
+  margin-top: 0.35rem;
+}
+
+.thinkboard-editor blockquote {
+  border-left: 4px solid #cbd5e1;
+  color: #475569;
+  margin: 1.4rem 0;
+  padding: 0.2rem 0 0.2rem 1rem;
+}
+
+.thinkboard-editor code {
+  background: #f5f1e8;
+  border-radius: 0.4rem;
+  color: #9a3412;
+  font-size: 0.9em;
+  padding: 0.18rem 0.35rem;
+}
+
+.thinkboard-editor pre {
+  background: #0f172a;
+  border-radius: 1rem;
+  color: #f8fafc;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  padding: 1rem 1.1rem;
+}
+
+.thinkboard-editor pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+.thinkboard-editor a {
+  color: #c2410c;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.thinkboard-editor ul[data-type="taskList"] {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.thinkboard-editor ul[data-type="taskList"] li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.thinkboard-editor ul[data-type="taskList"] li > label {
+  margin-top: 0.45rem;
+}
+
+.thinkboard-editor input[type="checkbox"] {
+  accent-color: #c2410c;
+  cursor: pointer;
+}
+
+.thinkboard-editor .is-empty::before,
+.thinkboard-editor .is-editor-empty:first-child::before {
+  color: #94a3b8;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
